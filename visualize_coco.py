@@ -5,6 +5,7 @@ import numpy as np
 import skimage.io as io
 import matplotlib.pyplot as plt
 import pylab
+import cv2
 
 image_directory = '/home/harman-jx/work/landslide/test/jpeg/'
 annotation_file = '/home/harman-jx/work/landslide/test/landslide_val_google_20191115.json'
@@ -37,8 +38,11 @@ plt.imshow(image); plt.axis('off')
 pylab.rcParams['figure.figsize'] = (8.0, 10.0)
 annotation_ids = example_coco.getAnnIds(imgIds=image_data['id'], catIds=category_ids, iscrowd=None)
 annotations = example_coco.loadAnns(annotation_ids)
+masks = []
 for annotation in annotations:
     print(annotation)
+    mask = example_coco.annToMask(annotation)
+    masks.append(mask)
     segmentation = annotation['segmentation']
     n = len(segmentation[0])
     x = []
@@ -49,3 +53,9 @@ for annotation in annotations:
     plt.scatter(x, y, color = 'red')
 example_coco.showAnns(annotations)
 plt.show()
+for mask in masks:
+#cv2.imwrite("temp.jpeg", mask)
+#temp = cv2.imread("temp.jpeg", cv2.IMREAD_GRAYSCALE)
+    masked = cv2.add(image, np.zeros(np.shape(image), dtype=np.uint8), mask = mask)
+    plt.imshow(masked)
+    plt.show()
