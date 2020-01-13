@@ -77,9 +77,9 @@ def train(cfg, local_rank, distributed):
 
 
 def test(cfg, model, distributed):
-    #output_dir = cfg.OUTPUT_DIR
-    #checkpointer = DetectronCheckpointer(cfg, model, save_dir=output_dir)
-    #_ = checkpointer.load(cfg.MODEL.WEIGHT)
+    output_dir = cfg.OUTPUT_DIR
+    checkpointer = DetectronCheckpointer(cfg, model, save_dir=output_dir)
+    _ = checkpointer.load(cfg.MODEL.WEIGHT)
 
 
     if distributed:
@@ -166,9 +166,9 @@ def main():
         logger.info(config_str)
     logger.info("Running with config:\n{}".format(cfg))
 
-    model = train(cfg, args.local_rank, args.distributed)
-    #model = build_detection_model(cfg)
-    #model.to(cfg.MODEL.DEVICE)
+    #model = train(cfg, args.local_rank, args.distributed)
+    model = build_detection_model(cfg)
+    model.to(cfg.MODEL.DEVICE)
 
     if not args.skip_test:
         test(cfg, model, args.distributed)

@@ -112,7 +112,7 @@ bbox_annotations = bbox_coco.loadAnns(bbox_annotation_ids)
 
 seg_annotation_ids = seg_coco.getAnnIds(imgIds=image_data['id'], catIds=category_ids, iscrowd=None)
 seg_annotations = seg_coco.loadAnns(seg_annotation_ids)
-ipdb.set_trace()
+#ipdb.set_trace()
 masks = []
 for annotation in annotations:
     bbox = annotation['bbox']
