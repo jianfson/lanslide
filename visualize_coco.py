@@ -69,7 +69,8 @@ print('Custom COCO supercategories: \n{}'.format(' '.join(category_names)))
 #exit()
 
 category_ids = example_coco.getCatIds(catNms=['landslide'])
-image_ids = example_coco.getImgIds(catIds=category_ids)
+#image_ids = example_coco.getImgIds(catIds=category_ids)
+image_ids = coco.getImgIds(imgIds = [174])
 image_data = example_coco.loadImgs(image_ids[np.random.randint(0, len(image_ids))])[0]
 #img_size=2000
 #sum_r=0
