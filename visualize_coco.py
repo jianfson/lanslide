@@ -149,7 +149,9 @@ plt.title('prediction')
 pylab.rcParams['figure.figsize'] = (8.0, 10.0)
 #example_coco.showAnns(annotations)
 for annotation in seg_annotations:
-    seg_coco.showAnns(annotation)
+    temp = []
+    temp.append(annotation)
+    seg_coco.showAnns(temp)
 #seg_coco.showAnns(seg_annotations)
 plt.show()
 exit()
