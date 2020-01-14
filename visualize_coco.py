@@ -150,7 +150,7 @@ pylab.rcParams['figure.figsize'] = (8.0, 10.0)
 #example_coco.showAnns(annotations)
 for annotation in seg_annotations:
     print(annotation)
-    if annotation['area'] == 158763 or annotation['area'] == 89501:
+    if annotation['area'] == 149497 or annotation['area'] == 132327:
         temp = []
         temp.append(annotation)
         seg_coco.showAnns(temp)
