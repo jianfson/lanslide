@@ -118,7 +118,7 @@ masks = []
 for annotation in annotations:
     bbox = annotation['bbox']
     cv2.rectangle(image, (int(bbox[0]), int(bbox[1])), (int(bbox[0]+bbox[2]), int(bbox[1]+bbox[3])), (0, 0, 255), 2)
-    print(annotation)
+    #print(annotation)
     mask = example_coco.annToMask(annotation)
 #area = np.sum(np.greator(mask,0))
     masks.append(mask)
@@ -149,6 +149,7 @@ plt.title('prediction')
 pylab.rcParams['figure.figsize'] = (8.0, 10.0)
 #example_coco.showAnns(annotations)
 for annotation in seg_annotations:
+    print(annotation)
     if annotation['area'] == 158763 or annotation['area'] == 89501:
         temp = []
         temp.append(annotation)
