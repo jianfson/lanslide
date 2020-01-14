@@ -140,15 +140,17 @@ example_coco.showAnns(annotations)
 
 
 image2 = io.imread(image_directory + image_data['file_name'])
-for annotation in bbox_annotations:
-    bbox = annotation['bbox']
-    cv2.rectangle(image2, (int(bbox[0]), int(bbox[1])), (int(bbox[0]+bbox[2]), int(bbox[1]+bbox[3])), (255, 0, 0), 2)
+#for annotation in bbox_annotations:
+#    bbox = annotation['bbox']
+#    cv2.rectangle(image2, (int(bbox[0]), int(bbox[1])), (int(bbox[0]+bbox[2]), int(bbox[1]+bbox[3])), (255, 0, 0), 2)
 plt.subplot(1,2,2)
 plt.imshow(image2); plt.axis('off')
 plt.title('prediction')
 pylab.rcParams['figure.figsize'] = (8.0, 10.0)
 #example_coco.showAnns(annotations)
-seg_coco.showAnns(seg_annotations)
+for annotation in seg_annotations:
+    seg_coco.showAnns(annotation)
+#seg_coco.showAnns(seg_annotations)
 plt.show()
 exit()
 #label = np.zeros_like(image, dtype='uint8')
