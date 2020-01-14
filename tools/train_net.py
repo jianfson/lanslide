@@ -166,9 +166,9 @@ def main():
         logger.info(config_str)
     logger.info("Running with config:\n{}".format(cfg))
 
-    #model = train(cfg, args.local_rank, args.distributed)
-    model = build_detection_model(cfg)
-    model.to(cfg.MODEL.DEVICE)
+    model = train(cfg, args.local_rank, args.distributed)
+    #model = build_detection_model(cfg)
+    #model.to(cfg.MODEL.DEVICE)
 
     if not args.skip_test:
         test(cfg, model, args.distributed)

@@ -36,7 +36,7 @@ class COCODataset(torchvision.datasets.coco.CocoDetection):
     def __getitem__(self, idx):
         #ipdb.set_trace()
         img, anno = super(COCODataset, self).__getitem__(idx)
-#print(self.get_img_info(idx))
+        print(self.get_img_info(idx))
 
         # filter crowd annotations
         # TODO might be better to add an extra field
