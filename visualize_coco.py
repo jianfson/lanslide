@@ -149,9 +149,10 @@ plt.title('prediction')
 pylab.rcParams['figure.figsize'] = (8.0, 10.0)
 #example_coco.showAnns(annotations)
 for annotation in seg_annotations:
-    temp = []
-    temp.append(annotation)
-    seg_coco.showAnns(temp)
+    if annotation['area'] == 158763 or annotation['area'] == 89501:
+        temp = []
+        temp.append(annotation)
+        seg_coco.showAnns(temp)
 #seg_coco.showAnns(seg_annotations)
 plt.show()
 exit()
