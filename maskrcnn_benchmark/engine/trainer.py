@@ -69,28 +69,28 @@ def do_train(
         iteration = iteration + 1
         arguments["iteration"] = iteration
 
-        ipdb.set_trace()
-        unloader=transforms.ToPILImage()
-        showimg = unloader(images.tensors[0])
-        showimg = np.array(showimg)
-        bboxs=targets[0].bbox
-        bboxs = bboxs.numpy()
-        for bbox in bboxs:
-            cv2.rectangle(showimg, (int(bbox[0]), int(bbox[1])), (int(bbox[2]), int(bbox[3])), (0, 0, 255), 4)
-        plt.imshow(showimg)
-        for mask in targets[0].extra_fields['masks'].polygons:
-            poly = mask.polygons
-            poly = poly[0]
-            #poly = poly.numpy()
-            n = len(poly)
-            x = []
-            y = []
-            for i in range(int(n/2)):
-                x.append(int(poly[i*2]))
-                y.append(int(poly[i*2+1]))
-            plt.plot(x,y,color="red",linewidth=2.0)
-            #plt.scatter(x, y, color = 'red')
-        ipdb.set_trace()
+        #ipdb.set_trace()
+        #unloader=transforms.ToPILImage()
+        #showimg = unloader(images.tensors[0])
+        #showimg = np.array(showimg)
+        #bboxs=targets[0].bbox
+        #bboxs = bboxs.numpy()
+        #for bbox in bboxs:
+        #    cv2.rectangle(showimg, (int(bbox[0]), int(bbox[1])), (int(bbox[2]), int(bbox[3])), (0, 0, 255), 4)
+        #plt.imshow(showimg)
+        #for mask in targets[0].extra_fields['masks'].polygons:
+        #    poly = mask.polygons
+        #    poly = poly[0]
+        #    #poly = poly.numpy()
+        #    n = len(poly)
+        #    x = []
+        #    y = []
+        #    for i in range(int(n/2)):
+        #        x.append(int(poly[i*2]))
+        #        y.append(int(poly[i*2+1]))
+        #    plt.plot(x,y,color="red",linewidth=2.0)
+        #    #plt.scatter(x, y, color = 'red')
+        #ipdb.set_trace()
         #plt.imshow(showimg)
 
         #plt.show()
