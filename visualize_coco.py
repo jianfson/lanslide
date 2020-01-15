@@ -43,10 +43,10 @@ def binary_mask_to_polygon(binary_mask, tolerance=0):
 
 #image_directory = '/home/harman-jx/work/landslide/test/jpeg/'
 #annotation_file = '/home/harman-jx/work/landslide/test/landslide_val_google_20191115.json'
-image_directory = '/media/jiangxin/data/lanslide/train/jpeg/'
-annotation_file = '/media/jiangxin/data/lanslide/train/landslide_train_google_20191115.json'
-#image_directory = '/media/jiangxin/data/lanslide/test/jpeg/'
-#annotation_file = '/media/jiangxin/data/lanslide/annotations/landslide_val_google_20191115.json'
+#image_directory = '/media/jiangxin/data/lanslide/train/jpeg/'
+#annotation_file = '/media/jiangxin/data/lanslide/train/landslide_train_google_20191115.json'
+image_directory = '/media/jiangxin/data/lanslide/test/jpeg/'
+annotation_file = '/media/jiangxin/data/lanslide/annotations/landslide_val_google_20191115.json'
 
 bbox_test_file = '/media/jiangxin/data/lanslide/models/inference/coco_2014_minival/bbox.json'
 seg_test_file = '/media/jiangxin/data/lanslide/models/inference/coco_2014_minival/segm.json'
@@ -101,7 +101,7 @@ image_data = example_coco.loadImgs(image_ids[np.random.randint(0, len(image_ids)
 
 # load and display instance annotations
 #image = io.imread(image_directory + 'J48E022011_wow_818_zx.jpeg')
-#plt.figure()
+plt.figure()
 image = io.imread(image_directory + image_data['file_name'])
 #plt.imshow(image); plt.axis('off')
 #pylab.rcParams['figure.figsize'] = (8.0, 10.0)
@@ -130,14 +130,14 @@ for annotation in annotations:
         x.append(segmentation[0][i*2])
         y.append(segmentation[0][i*2+1])
 #plt.scatter(x, y, color = 'red')
-#plt.subplot(1,2,1)
+plt.subplot(1,2,1)
 plt.imshow(image); plt.axis('off')
-#plt.title('Ground Truth')
+plt.title('Ground Truth')
 pylab.rcParams['figure.figsize'] = (8.0, 10.0)
 example_coco.showAnns(annotations)
 #seg_coco.showAnns(seg_annotations)
-plt.show()
-exit()
+#plt.show()
+#exit()
 
 
 image2 = io.imread(image_directory + image_data['file_name'])
@@ -149,13 +149,13 @@ plt.imshow(image2); plt.axis('off')
 plt.title('prediction')
 pylab.rcParams['figure.figsize'] = (8.0, 10.0)
 #example_coco.showAnns(annotations)
-for annotation in seg_annotations:
-    print(annotation)
-    if annotation['area'] == 149497 or annotation['area'] == 132327:
-        temp = []
-        temp.append(annotation)
-        seg_coco.showAnns(temp)
-#seg_coco.showAnns(seg_annotations)
+#for annotation in seg_annotations:
+#    print(annotation)
+#    if annotation['area'] == 149497 or annotation['area'] == 132327:
+#        temp = []
+#        temp.append(annotation)
+#        seg_coco.showAnns(temp)
+seg_coco.showAnns(seg_annotations)
 plt.show()
 exit()
 #label = np.zeros_like(image, dtype='uint8')
