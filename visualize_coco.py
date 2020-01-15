@@ -108,11 +108,11 @@ image = io.imread(image_directory + image_data['file_name'])
 annotation_ids = example_coco.getAnnIds(imgIds=image_data['id'], catIds=category_ids, iscrowd=None)
 annotations = example_coco.loadAnns(annotation_ids)
 
-#bbox_annotation_ids = bbox_coco.getAnnIds(imgIds=image_data['id'], catIds=category_ids, iscrowd=None)
-#bbox_annotations = bbox_coco.loadAnns(bbox_annotation_ids)
+bbox_annotation_ids = bbox_coco.getAnnIds(imgIds=image_data['id'], catIds=category_ids, iscrowd=None)
+bbox_annotations = bbox_coco.loadAnns(bbox_annotation_ids)
 
-#seg_annotation_ids = seg_coco.getAnnIds(imgIds=image_data['id'], catIds=category_ids, iscrowd=None)
-#seg_annotations = seg_coco.loadAnns(seg_annotation_ids)
+seg_annotation_ids = seg_coco.getAnnIds(imgIds=image_data['id'], catIds=category_ids, iscrowd=None)
+seg_annotations = seg_coco.loadAnns(seg_annotation_ids)
 #ipdb.set_trace()
 masks = []
 for annotation in annotations:
@@ -141,9 +141,9 @@ example_coco.showAnns(annotations)
 
 
 image2 = io.imread(image_directory + image_data['file_name'])
-#for annotation in bbox_annotations:
-#    bbox = annotation['bbox']
-#    cv2.rectangle(image2, (int(bbox[0]), int(bbox[1])), (int(bbox[0]+bbox[2]), int(bbox[1]+bbox[3])), (255, 0, 0), 2)
+for annotation in bbox_annotations:
+    bbox = annotation['bbox']
+    cv2.rectangle(image2, (int(bbox[0]), int(bbox[1])), (int(bbox[0]+bbox[2]), int(bbox[1]+bbox[3])), (255, 0, 0), 2)
 plt.subplot(1,2,2)
 plt.imshow(image2); plt.axis('off')
 plt.title('prediction')
